@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>900</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Google Sans</family>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>CSV ReWriter</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">QWidget{
+background-color: #ffffff;
+color: #212121;
+}
+
+QPushButton{
+background-color: #4cefa7;
+padding: 2px;
+border: 2px solid #cacaca;
+}
+
+QLineEdit{
+border-radius: 3px;
+padding: 5px;
+border: 1px solid #d8d8d8
+}
+
+QTableView::item{
+padding: 7px;
+font: 300 14px/18px Roboto,sans-serif;
+}
+
+QTableView::item:focus{
+padding: 0;
+}
+
+</string>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="minimumSize">
+       <size>
+        <width>127</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::TabFocus</enum>
+      </property>
+      <property name="tabShape">
+       <enum>QTabWidget::Rounded</enum>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="movable">
+       <bool>false</bool>
+      </property>
+      <property name="tabBarAutoHide">
+       <bool>false</bool>
+      </property>
+      <widget class="QWidget" name="start_tab">
+       <attribute name="title">
+        <string>Load Page</string>
+       </attribute>
+       <attribute name="toolTip">
+        <string></string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_6">
+        <item row="0" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <item>
+             <spacer name="verticalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item alignment="Qt::AlignHCenter">
+             <widget class="QLabel" name="label_left_main_title">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>1</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Google Sans</family>
+                <pointsize>36</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>ReWriter</string>
+              </property>
+              <property name="margin">
+               <number>0</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_left_sub_title">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>1</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Google Sans</family>
+                <pointsize>16</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+                <underline>true</underline>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color:rgb(20,146,255);</string>
+              </property>
+              <property name="text">
+               <string></string>
+              </property>
+              <property name="textFormat">
+               <enum>Qt::AutoText</enum>
+              </property>
+              <property name="scaledContents">
+               <bool>true</bool>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
+              <item>
+               <widget class="QLabel" name="label">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>1</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Google Sans</family>
+                  <pointsize>15</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string></string>
+                </property>
+                <property name="scaledContents">
+                 <bool>true</bool>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QPushButton" name="btn_load_csv">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+                  <horstretch>2</horstretch>
+                  <verstretch>2</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>100</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>12</pointsize>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">padding:10px;
+border-radius:5px;
+border-color: #cacaca;
+width:300px;</string>
+                </property>
+                <property name="text">
+                 <string>Click To Load File</string>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>../icons/app_icon_bw.png</normaloff>../icons/app_icon_bw.png</iconset>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_2">
+              <property name="text">
+               <string></string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="main_document_tab">
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
+       <attribute name="title">
+        <string>Main Document</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <widget class="QTableWidget" name="csv_data_table"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="plot_tab">
+       <attribute name="title">
+        <string>Plot</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3" rowstretch="0,1">
+        <item row="1" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <property name="topMargin">
+           <number>10</number>
+          </property>
+          <item>
+           <layout class="QHBoxLayout" name="plot_frame_horizontal">
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,0,0,0,0,0,0">
+          <property name="spacing">
+           <number>6</number>
+          </property>
+          <property name="sizeConstraint">
+           <enum>QLayout::SetFixedSize</enum>
+          </property>
+          <item>
+           <widget class="QPushButton" name="btn_save_plot">
+            <property name="toolTip">
+             <string></string>
+            </property>
+            <property name="text">
+             <string>Save Plot PNG</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_close_plot">
+            <property name="text">
+             <string>Close Plot</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="input_plot_title">
+            <property name="maxLength">
+             <number>50</number>
+            </property>
+            <property name="placeholderText">
+             <string>Plot Title</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_set_plot_title">
+            <property name="text">
+             <string>Set Title</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radio_plot_xy">
+            <property name="styleSheet">
+             <string notr="true">QRadioButton{
+padding:5px;
+}</string>
+            </property>
+            <property name="text">
+             <string>Plot (x,y)</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radio_plot_yx">
+            <property name="styleSheet">
+             <string notr="true">QRadioButton{
+padding:5px;
+}</string>
+            </property>
+            <property name="text">
+             <string>Plot (y,x)</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>619</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="action_load_file"/>
+    <addaction name="action_close_file"/>
+    <addaction name="separator"/>
+    <addaction name="action_add_data"/>
+    <addaction name="action_add_column"/>
+    <addaction name="separator"/>
+    <addaction name="action_save_file"/>
+    <addaction name="action_save_plot_png"/>
+    <addaction name="separator"/>
+    <addaction name="action_exit"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="action_edit_data"/>
+    <addaction name="action_delete_selected"/>
+   </widget>
+   <widget class="QMenu" name="menuPlot">
+    <property name="title">
+     <string>Plot</string>
+    </property>
+    <addaction name="action_plot_scatter_points"/>
+    <addaction name="action_plot_scatter_points_lines"/>
+    <addaction name="action_plot_lines"/>
+   </widget>
+   <widget class="QMenu" name="menu_View">
+    <property name="title">
+     <string>&amp;View</string>
+    </property>
+    <addaction name="action_column_layout"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menu_View"/>
+   <addaction name="menuPlot"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_toolbar_open_file"/>
+   <addaction name="action_toolbar_save_file"/>
+   <addaction name="separator"/>
+   <addaction name="action_toolbar_add_data"/>
+   <addaction name="action_toolbar_delete_selected"/>
+   <addaction name="separator"/>
+   <addaction name="action_toolbar_plot_scatter_points"/>
+   <addaction name="action_toolbar_plot_scatter_points_lines"/>
+   <addaction name="action_toolbar_plot_lines"/>
+   <addaction name="action_toolbar_save_plot_png"/>
+  </widget>
+  <widget class="QToolBar" name="toolbar_bottom_info">
+   <property name="windowTitle">
+    <string>toolBar_2</string>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget{
+border: 2px solid;
+border-color: transparent #ccc transparent transparent
+}</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>BottomToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_toolbar_bottom_column_count"/>
+   <addaction name="action_toolbar_bottom_row_count"/>
+   <addaction name="action_toolbar_bottom_source"/>
+   <addaction name="action_toolbar_bottom_column"/>
+   <addaction name="action_toolbar_bottom_row"/>
+   <addaction name="action_toolbar_bottom_selected_cells"/>
+   <addaction name="action_toolbar_bottom_text_length"/>
+  </widget>
+  <action name="action_load_file">
+   <property name="text">
+    <string>&amp;Load File</string>
+   </property>
+  </action>
+  <action name="action_close_file">
+   <property name="text">
+    <string>&amp;Close File</string>
+   </property>
+  </action>
+  <action name="action_save_file">
+   <property name="text">
+    <string>&amp;Save</string>
+   </property>
+  </action>
+  <action name="action_edit_data">
+   <property name="text">
+    <string>Edit Data</string>
+   </property>
+  </action>
+  <action name="action_save_as">
+   <property name="text">
+    <string>Save as</string>
+   </property>
+  </action>
+  <action name="action_exit">
+   <property name="text">
+    <string>&amp;Exit</string>
+   </property>
+  </action>
+  <action name="action_add_data">
+   <property name="text">
+    <string>&amp;Add Row</string>
+   </property>
+  </action>
+  <action name="action_column_layout">
+   <property name="text">
+    <string>Show/Hide Columns</string>
+   </property>
+  </action>
+  <action name="action_toolbar_add_data">
+   <property name="text">
+    <string>Add Data</string>
+   </property>
+   <property name="toolTip">
+    <string>Add Row to the table</string>
+   </property>
+  </action>
+  <action name="action_toolbar_delete_selected">
+   <property name="text">
+    <string>Delete Selected</string>
+   </property>
+   <property name="toolTip">
+    <string>Delete Selected</string>
+   </property>
+  </action>
+  <action name="action_toolbar_plot_scatter_points">
+   
+   <property name="text">
+    <string>Plot Scatter Points</string>
+   </property>
+   <property name="toolTip">
+    <string>Plot Scatter Points</string>
+   </property>
+  </action>
+  <action name="action_toolbar_plot_scatter_points_lines">
+   
+   <property name="text">
+    <string>Plot Scatter Points</string>
+   </property>
+   <property name="toolTip">
+    <string>Plot Scatter Points</string>
+   </property>
+  </action>
+  <action name="action_toolbar_plot_lines">
+   
+   <property name="text">
+    <string>Plot Lines</string>
+   </property>
+   <property name="toolTip">
+    <string>Plot Lines</string>
+   </property>
+  </action>
+  <action name="action_toolbar_save_file">
+   
+   <property name="text">
+    <string>Save File</string>
+   </property>
+   <property name="toolTip">
+    <string>Save table as CSV file</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="action_toolbar_open_file">
+   
+   <property name="text">
+    <string>Open CSV File</string>
+   </property>
+   <property name="toolTip">
+    <string>Open CSV File</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="action_plot_scatter_points">
+   <property name="text">
+    <string>Scatter Points</string>
+   </property>
+  </action>
+  <action name="action_plot_scatter_points_lines">
+   <property name="text">
+    <string>Scatter Points with Smooth Lines</string>
+   </property>
+  </action>
+  <action name="action_plot_lines">
+   <property name="text">
+    <string>Lines</string>
+   </property>
+  </action>
+  <action name="action_save_plot_png">
+   <property name="text">
+    <string>Save Plot</string>
+   </property>
+  </action>
+  <action name="action_toolbar_save_plot_png">
+   
+   <property name="text">
+    <string>Save Plot PNG</string>
+   </property>
+   <property name="toolTip">
+    <string>Save Plot</string>
+   </property>
+  </action>
+  <action name="action_delete_selected">
+   <property name="text">
+    <string>Delete Selected</string>
+   </property>
+  </action>
+  <action name="action_toolbar_bottom_column_count">
+   <property name="text">
+    <string>15</string>
+   </property>
+  </action>
+  <action name="action_toolbar_bottom_row_count">
+   <property name="text">
+    <string>32</string>
+   </property>
+  </action>
+  <action name="action_toolbar_bottom_source">
+   <property name="text">
+    <string>test_data.csv</string>
+   </property>
+  </action>
+  <action name="action_toolbar_bottom_column">
+   <property name="text">
+    <string>4</string>
+   </property>
+  </action>
+  <action name="action_toolbar_bottom_row">
+   <property name="text">
+    <string>5</string>
+   </property>
+   <property name="font">
+    <font/>
+   </property>
+  </action>
+  <action name="action_toolbar_bottom_selected_cells">
+   <property name="text">
+    <string>15</string>
+   </property>
+  </action>
+  <action name="action_toolbar_bottom_text_length">
+   <property name="text">
+    <string>18</string>
+   </property>
+  </action>
+  <action name="action_add_column">
+   <property name="text">
+    <string>&amp;Add Column</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
